@@ -1,45 +1,34 @@
-<%- include('../../Shared/includes/head' , {pageTitle : 'your Cart'})  %>
+<%- include('../../Shared/includes/head', { pageTitle: 'Your Cart' }) %>
 <link rel="stylesheet" href="/styles/cart.css">
-<script src="/scripts/cart-item-managment.js"  defer></script>
-
+<script src="/scripts/cart-item-managment.js" defer></script>
 </head>
 <body>
     <%- include('../../Shared/includes/header') %>
-<main>
-    <h1>Your Cart</h1>
-<ul id="cart-items" >
-    <% for (const cartItem of locals.cart.items) { %>
-        <li>
-            <%- include('includes/cart-item', { item: cartItem }) %>
-        </li>
-    <% } %>
     
-</ul>
-<div id = "cart-total">
-<p>
-    Total : $ <span id="cart-total-price">
-        <%= locals.cart.totalPrice.toFixed(2) %>
-    </span>
-   
-</p>
-<% if(locals.isAuth){  %>
-    <form action="/orders" method="POST">
-        <input type="hidden" name="csrf" value="<%= locals.csrfToken %>">
-        <button class="btn" id="buy-button">
-            Buy Product
-        </button>
-    </form>
-    
-<% } else { %>
-   <p id="cart-total-fallback" >
-    Loginin to buy products
-   </p>
-<% } %>
-    
+    <main>
+        <h1>Your Cart</h1>
+        <ul id="cart-items">
+            <% for (const cartItem of locals.cart.items) { %>
+                <li>
+                    <%- include('includes/cart-item', { item: cartItem }) %>
+                </li>
+            <% } %>
+        </ul>
+        
+        <div id="cart-total">
+            <p>
+                Total: $<span id="cart-total-price"><%= locals.cart.totalPrice.toFixed(2) %></span>
+            </p>
+            
+            <% if (locals.isAuth) { %>
+                <form action="/orders" method="POST">
+                    <input type="hidden" name="csrf" value="<%= locals.csrfToken %>">
+                    <button class="btn" id="buy-button">Buy Product</button>
+                </form>
+            <% } else { %>
+                <p id="cart-total-fallback">Log in to buy products</p>
+            <% } %>
+        </div>
+    </main>
 
-</div>
-
-
-</main>
-
-<%- include('../../Shared/includes/footer') %></form>
+<%- include('../../Shared/includes/footer') %>

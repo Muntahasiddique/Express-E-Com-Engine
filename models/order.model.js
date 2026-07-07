@@ -1,32 +1,40 @@
-const db = require('../data/database');
-class Order{
-    constructor(cart , userData, status = 'pending' , date , orderId){
-       this.productData = cart;
-         this.userData = userData;
-            this.status = status;
-            this.date = new Date(date);
-            if(this.date){
-                this.formattedDate = this.date.toDateString('en-US' , {year: 'numeric' , month: 'long' , day: 'numeric'});
-            }
-            this.id= orderId;
+const Order = require('../models/order.model');
+const User = require('../models/user.model');
 
-       
-    }
-    save(){
-        if(this.id){
+async function getOrders(req, res) {
+  try {
+    const orders = await Order.findAllForUser(res.locals.uid);
+    res.render('customer/orders/all-orders', {
+      orders: orders,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
 
-        }
-    
-else{
-    const orderDocument = {
- useData : this.userData,
- productData:this.productData,
- date: new Date(),
-    status: this.status,
+async function addOrder(req, res, next) {
+  let userDocument;
+  try {
+    userDocument = await User.findById(res.locals.uid);
+  } catch (error) {
+    return next(error);
+  }
+
+  const order = new Order(cart, userDocument);
+
+  try {
+    await order.save();
+  } catch (error) {
+    next(error);
+    return;
+  }
+
+  req.session.cart = null;
+
+  res.redirect('/orders');
+}
+
+module.exports = {
+  addOrder: addOrder,
+  getOrders: getOrders,
 };
-return db.getDb()
-.collection('orders').insertOne(orderDocument)
-    }
-}}
-
-module.exports = Order;

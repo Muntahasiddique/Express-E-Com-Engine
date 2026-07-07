@@ -1,5 +1,5 @@
 const cartItemUpdateFormElements = document.querySelectorAll('.cart-item-management');
-const cartTotalPriceElement = document.getElementById('.cart-total-price');
+const cartTotalPriceElement = document.getElementById('cart-total-price');
 const cartBadgeElement = document.querySelector('.nav-item .badge');
 
 async function updateCartItem(event){

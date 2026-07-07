@@ -57,7 +57,7 @@ app.use(errorHandlingMiddleware);
 
 db.connectToDatabase()
   .then(() => {
-    app.listen(3000);
+    app.listen(3001);
   })
   .catch((error) => {
     console.log('Failed to Connect');

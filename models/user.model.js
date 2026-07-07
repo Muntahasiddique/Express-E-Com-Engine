@@ -24,7 +24,9 @@ class Users {
     }
     static async findById(useId){
 const uid = new ObjectId(useId);
-return await db.getDb().collection('users').findOne({_id: uid}, { password : 0} );
+return await db.getDb().collection('users').findOne({_id: uid}, {
+    projection : {password: 0}
+} );
     }
 
     async getuserWithSameEmail() {

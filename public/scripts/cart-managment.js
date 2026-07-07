@@ -6,15 +6,15 @@ async  function addToCart(){
     const csrfToken = addToCartButtonElement.dataset.csrf;
     let response
 try{
-    response=  await fetch('/cart/items',{
-        method: 'POST',
-        body: JSON.stringify({productId: productId
-        
-        }),
-        headers: {
-            'Content-Type': 'application/json',
-            'CSRF-Token': csrfToken //
-        }
+   response = await fetch('/cart/items',{
+            method: 'POST',
+            body: JSON.stringify({
+                productId: productId,
+                _csrf: csrfToken // <-- You must add this here!
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
 }
 catch(error){
