@@ -8,10 +8,10 @@ function getSignup(req, res, next) {
     if (!sessionData) {
         sessionData = {
             email: '',
-            'Confirm-Email': '',
-            fullname: '',
+            confirmEmail: '', // Fixed capitalization
+            fullName: '',     // Fixed capitalization
             street: '',
-            postalcode: '',
+            postalCode: '',   // Fixed capitalization
             city: '',
             password: '',
         };
