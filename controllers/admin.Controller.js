@@ -94,7 +94,7 @@ async function updateOrder(req, res, next) {
 
     await order.save();
 
-    res.json({ message: 'Order updated', newStatus: newStatus });
+res.redirect('/admin/orders');
   } catch (error) {
     next(error);
   }

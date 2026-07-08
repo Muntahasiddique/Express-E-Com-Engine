@@ -35,7 +35,7 @@ async function Signup(req, res, next) {
         city: req.body.City
     };
 
-    if (!validation.userCredentialsValidation(req.body.Email, req.body.Password, req.body.FullName, req.body.Street, req.body.PostalCode, req.body.City) ||
+  if (!validation.userDetailsValidation(req.body.Email, req.body.Password, req.body.FullName, req.body.Street, req.body.PostalCode, req.body.City) ||
         !validation.emailValidation(req.body['Confirm-Email'], req.body.Email)) {
         sessionFlash.flashDatatoSession(req, {
             errorMessage: 'Invalid input',

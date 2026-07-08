@@ -21,10 +21,10 @@
             </p>
             
             <% if (locals.isAuth) { %>
-                <form action="/orders" method="POST">
-                    <input type="hidden" name="csrf" value="<%= locals.csrfToken %>">
-                    <button class="btn" id="buy-button">Buy Product</button>
-                </form>
+               <form action="/orders" method="POST">
+    <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>"> 
+    <button class="btn" id="buy-button">Buy Product</button>
+</form>
             <% } else { %>
                 <p id="cart-total-fallback">Log in to buy products</p>
             <% } %>

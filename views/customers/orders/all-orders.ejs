@@ -1,13 +1,27 @@
-<%- include('../../Shared/includes/head' , {pageTitle : 'All orders'})  %>
-<link rel="stylesheet" href="/styles/products.css">
-
+<%- include('../../Shared/includes/head', { pageTitle: 'All Orders' }) %>
+<link rel="stylesheet" href="/styles/orders.css">
 </head>
 <body>
     <%- include('../../Shared/includes/header') %>
-<main>
-    <h1>All Your Orders</h1>
+    
+    <main>
+        <h1>All Your Orders</h1>
+        
+        <% if (locals.orders && locals.orders.length > 0) { %>
+            <ul id="orders-list">
+                <% for (const order of locals.orders) { %>
+                    <li class="order-item">
+                        <h2>Order #<%= order.id %></h2>
+                        <p><strong>Status:</strong> <span class="order-status"><%= order.status %></span></p>
+                        <p><strong>Date:</strong> <time datetime="<%= order.date.toISOString() %>"><%= order.formattedDate %></time></p>
+                        <p><strong>Total Price:</strong> $<%= order.productData.totalPrice.toFixed(2) %></p>
+                        <hr>
+                    </li>
+                <% } %>
+            </ul>
+        <% } else { %>
+            <p>You have no orders yet!</p>
+        <% } %>
+    </main>
 
-
-</main>
-
-<%- include('../../Shared/includes/footer') %></form>
+<%- include('../../Shared/includes/footer') %>
