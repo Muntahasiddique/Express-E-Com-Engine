@@ -1,18 +1,27 @@
-h1{
+h1 {
     text-align: center;
-    color: var(--color-gray-300);
+    color: var(--color-text-main);
+    margin-bottom: var(--space-6);
 }
-form{
-    max-width: 25rem;
+
+.auth-form {
+    max-width: 28rem;
     margin: var(--space-8) auto;
-    padding: var(--space-4);
-    background-color: var(--color-gray-600);
+    padding: 2.5rem;
+    background-color: var(--color-bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-drop);
+}
+
+.auth-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form a {
+    display: inline-block;
+    margin-top: var(--space-4);
+    font-size: 0.9rem;
     text-align: center;
-}
-form a{
-    color: var(--color-primary-200);
-}
-form a :hover,form a:active{
-color: var(--color-primary-400);
 }

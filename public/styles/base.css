@@ -1,107 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
 * {
-    box-sizing: border-box;
-  }
-  
-  html {
-    font-family: "Montserrat", "sans-serif";
-  
-    --color-gray-50: rgb(243, 236, 230);
-    --color-gray-100: rgb(207, 201, 195);
-    --color-gray-300: rgb(99, 92, 86);
-    --color-gray-400: rgb(70, 65, 60);
-    --color-gray-500: rgb(37, 34, 31);
-    --color-gray-600: rgb(32, 29, 26);
-    --color-gray-700: rgb(31, 26, 22);
-  
-    --color-primary-50: rgb(253, 224, 200);
-    --color-primary-100: rgb(253, 214, 183);
-    --color-primary-200: rgb(250, 191, 143);
-    --color-primary-400: rgb(223, 159, 41);
-    --color-primary-500: rgb(212, 136, 14);
-    --color-primary-700: rgb(212, 120, 14);
-    --color-primary-200-contrast: rgb(100, 46, 2);
-    --color-primary-500-contrast: white;
-  
-    --color-error-100: rgb(255, 192, 180);
-    --color-error-500: rgb(199, 51, 15);
-  
-    --color-primary-500-bg: rgb(63, 60, 58);
-  
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-4: 1rem;
-    --space-6: 1.5rem;
-    --space-8: 2rem;
-  
-    --border-radius-small: 4px;
-    --border-radius-medium: 6px;
-  
-    --shadow-medium: 0 2px 8px rgba(0, 0, 0, 0.2);
-  }  
-
-  body{
-    margin: 0;
-    background-color: var(--color-gray-500);
-    color: var(--color-gray-100);
-  }
-  main{
-    width: 90%;
-    max-width: 50rem;
-    margin: 0 auto;
-  }
-ul,ol{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-a{
-    text-decoration: none;
-    color: var(--color-primary-400);
-}
-.btn{
-    cursor: pointer;
-    font: inherit;
-    padding: var(--space-2) var(--space-6);
-    background-color: var(--color-primary-500);
-    color : var(--color-primary-500-contrast);
-    border: var(--border-radius-small);
-}
-.btn:hover , 
-.btn:active{
-    background-color: var(--color-primary-700);
-    border-color: var(--color-primary-700);
-}
-.btn-alt{
-    background-color: transparent;
-    color: var(--color-primary-500);
-    border: 1px solid var(--color-primary-500);
-}
-.btn-alt:hover,
-.btn-alt:active{
-    background-color: var(--color-primary-500-bg);
-   
-}
-.alert {
-  padding: var(--space-2);
-  border-radius: var(--border-radius-small);
-  margin: var(--space-4) 0;
-  background-color: var(--color-error-100);
-  color: var(--color-error-500);
+  box-sizing: border-box;
 }
 
-.alert h2 {
-  font-size: 1rem;
+:root {
+  /* Deep Tech Marine Palette */
+  --color-bg-main: #060B14;
+  --color-bg-card: #0F172A;
+  --color-bg-elevated: #1E293B;
+  
+  --color-text-main: #F8FAFC;
+  --color-text-muted: #94A3B8;
+
+  --color-accent-main: #00F0FF; /* Cyber Cyan */
+  --color-accent-hover: #00C4D1;
+  --color-accent-dim: rgba(0, 240, 255, 0.1);
+
+  --color-error-main: #EF4444;
+  --color-error-bg: rgba(239, 68, 68, 0.1);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  --border-radius-small: 6px;
+  --border-radius-medium: 12px;
+  
+  --shadow-glow: 0 0 15px rgba(0, 240, 255, 0.2);
+  --shadow-drop: 0 10px 25px rgba(0, 0, 0, 0.5);
+}  
+
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
   margin: 0;
-  text-transform: capitalize;
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+  /* The Holographic Grid Background */
+  background-image: 
+    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: 0 0;
+  animation: panGrid 20s linear infinite, fadeIn 0.8s ease-out forwards;
 }
 
-.alert p {
-  margin: var(--space-2) 0;
+@keyframes panGrid {
+  from { background-position: 0 0; }
+  to { background-position: 30px 30px; }
 }
-.badge{
-  margin-bottom: var(--space-2);
-  padding: var(--space-1) var(--space-2);
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+main {
+  width: 90%;
+  max-width: 65rem;
+  margin: 2rem auto;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-accent-main);
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+  text-shadow: var(--shadow-glow);
+}
+
+/* Global Buttons */
+.btn, .btn-alt {
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.2rem;
   border-radius: var(--border-radius-small);
-  background-color: var(--color-primary-500);
-  color: var(--color-primary-500-contrast);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@keyframes sonarPulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 240, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+}
+
+/* Update your existing .btn class to include this animation */
+.btn {
+  background-color: var(--color-accent-main);
+  color: var(--color-bg-main);
+  border: 1px solid var(--color-accent-main);
+  animation: sonarPulse 2s infinite; /* Adds the continuous heartbeat */
+}
+
+/* Stop the pulse when they hover over it so it feels reactive */
+.btn:hover, .btn:active {
+  background-color: transparent;
+  color: var(--color-accent-main);
+  box-shadow: var(--shadow-glow);
+  animation: none; 
+}
+
+.btn:hover, .btn:active {
+  background-color: transparent;
+  color: var(--color-accent-main);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-alt {
+  background-color: transparent;
+  color: var(--color-accent-main);
+  border: 1px solid var(--color-accent-main);
+}
+
+.btn-alt:hover, .btn-alt:active {
+  background-color: var(--color-accent-main);
+  color: var(--color-bg-main);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Alerts & Badges */
+.alert {
+  padding: var(--space-4);
+  border-radius: var(--border-radius-medium);
+  margin: var(--space-4) 0;
+  background-color: var(--color-error-bg);
+  border: 1px solid var(--color-error-main);
+  color: var(--color-error-main);
+}
+
+.badge {
+  margin-left: var(--space-2);
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  background-color: var(--color-accent-main);
+  color: var(--color-bg-main);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+/* --- PRODUCT DETAILS PAGE OVERRIDE --- */
+main img {
+    max-width: 100%;
+    max-height: 450px;
+    width: auto;
+    object-fit: contain;
+    border-radius: var(--border-radius-medium);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-drop);
+    margin-bottom: var(--space-6);
 }
