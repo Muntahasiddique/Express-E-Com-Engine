@@ -64,12 +64,13 @@ async function deleteProduct(req, res, next) {
   let product;
   try {
     product = await Product.findById(req.params.id);
-    await product.remove();
+    await product.remove(); // Or product.delete(), depending on your model
   } catch (error) {
     return next(error);
   }
 
-  res.json({ message: 'Deleted product!' });
+  // THIS IS THE NEW LINE:
+  res.redirect('/admin/products');
 }
 
 async function getOrders(req, res, next) {

@@ -1,4 +1,4 @@
-const deleteProductButtonElements = document.querySelectorAll('.product-item button');
+const deleteProductElements = document.querySelectorAll('#products-grid button');
 async function deleteProductHandler(event){
   const buttonElement  = event.target;
   const productId = buttonElement.dataset.productid;

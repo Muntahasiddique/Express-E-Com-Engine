@@ -1,120 +1,84 @@
-#products-grid{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.product-item{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    padding: 10px;
-    border-radius: var(--border-radius-medium);
-    width: 300px;
-    height: 400px;
-    text-align: center;
-    background-color: var(--color-gray-600);
-    overflow: hidden;
-}
-.product-item img{
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-.product-item-content{
-    padding: var(--space-4);
-}
-.product-item-content h2{
-    font-size: 1.15rem;
-    margin:var(--space-2) 0;
-
-}
-.product-item-actions{
-    display: flex;
-    gap: var(--space-2);
-    margin-top: var(--space-4);
-}
-#products-grid {
-  margin: var(--space-8) auto;
+/* The Grid Container */
+#products-grid, .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto;
+  max-width: 1200px;
 }
 
+/* The Product Card */
 .product-item {
-  border-radius: var(--border-radius-medium);
-  text-align: center;
-  background-color: var(--color-gray-600);
+  display: flex;
+  flex-direction: column;
+  background-color: #383431; /* Slightly lighter than the page background to stand out */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   overflow: hidden;
+  height: 100%; /* Forces all cards in a row to be the same height */
+  transition: transform 0.2s ease-in-out;
 }
 
+.product-item:hover {
+  transform: translateY(-5px);
+}
+
+/* The Image Fix (Crucial for uneven photos) */
 .product-item img {
   width: 100%;
-  height: 10rem;
-  object-fit: cover;
+  height: 220px;
+  object-fit: cover; /* This forces the image to fill the box without stretching */
+  border-bottom: 2px solid #ffaa00; /* Yellow accent line */
 }
 
-.product-item-content {
-  padding: var(--space-4);
-}
-
-.product-item-content h2 {
-  font-size: 1.15rem;
-  margin: var(--space-2) 0;
-}
-
-.product-item-actions {
+/* The Content Area */
+.product-item__content {
+  padding: 1.5rem;
   display: flex;
-  gap: var(--space-2);
-  margin-top: var(--space-4);
-  justify-content: center;
-}
-
-#product-details header {
-  margin-top: var(--space-8);
-  padding: var(--space-8);
-  background-color: var(--color-gray-600);
-  gap: var(--space-8);
-}
-
-#product-details img {
-  width: 100%;
-  height: 6rem;
-  object-fit: cover;
-  border-radius: var(--border-radius-medium);
-  border: 1px solid var(--color-gray-100);
-}
-
-#product-info {
+  flex-direction: column;
+  flex-grow: 1; /* Pushes the buttons to the bottom */
   text-align: center;
 }
 
-#product-description {
-  background-color: var(--color-primary-500-bg);
-  padding: var(--space-8);
-  white-space: pre-wrap;
+.product-item__content h2 {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
 }
 
-@media (min-width: 48rem) {
-  #product-details header {
-    display: flex;
-  }
+/* The Button Container */
+.product-item-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: auto; /* Forces buttons to the absolute bottom of the card */
+}
 
-  #product-details img {
-    width: 20rem;
-    height: 15rem;
-    transform: rotateZ(-10deg);
-    margin: var(--space-8);
-  }
+/* The Buttons */
+.btn, .btn-alt {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #ffaa00;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
 
-  #product-info {
-    text-align: left;
-  }
+.btn-alt {
+  background-color: transparent;
+  color: #ffaa00;
+}
+
+.btn-alt:hover {
+  background-color: #ffaa00;
+  color: #1f1d1b;
+}
+/* Annihilate the stray bullet points */
+#products-grid li, .products-grid li, .product-item {
+  list-style: none !important;
 }

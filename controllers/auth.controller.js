@@ -124,14 +124,12 @@ async function login(req, res, next) {
     }
 }
 
-function logout(req, res, next) {
-    try {
-        authUtil.DestroyUserSession(req, function() {
-            res.redirect('/login');
-        });
-    } catch (error) {
-        next(error);
-    }
+function logout(req, res) {
+  // This physically destroys the session cookie on the server
+  req.session.destroy(function() {
+    // Once destroyed, redirect them safely to the customer homepage or login
+    res.redirect('/'); 
+  });
 }
 
 module.exports = {

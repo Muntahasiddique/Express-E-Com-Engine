@@ -8,8 +8,7 @@ router.get('/products/new' ,adminController.getNewProduct);
 router.post('/products', imageUploadMiddleware, adminController.createNewProduct); 
 router.get('/products/:id', adminController.getUpdateProduct);
 router.post('/products/:id', imageUploadMiddleware, adminController.updateProduct);
-router.delete('/products/:id', adminController.deleteProduct);
-
+router.post('/products/:id/delete', adminController.deleteProduct);
 // ADDED: The missing Order routes
 router.get('/orders', adminController.getOrders);
 router.post('/orders/:id', adminController.updateOrder);

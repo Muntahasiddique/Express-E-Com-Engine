@@ -2,18 +2,22 @@
     <img src="<%= product.imageUrl %>" alt="<%=product.title  %>">
     <div class="product-item__content">
         <h2> <%=product.title  %> </h2>
-        <div class="product-item__actions">
-            <% if(locals.isAdmin) {%>
-            <a class="btn btn-alt" href="/admin/products/<%= product.id %>" >View And Edit</a>
-            <Button class="btn btn-alt" 
-            data-productid="<%= product.id %>" 
-            data-csrf="<%= locals.csrfToken %>">
-            Delete
-    </Button>
-    <% }else{ %>
-    <a class="btn btn-alt " href="/products/<%= product.id %>" >View Details</a>
-    <% } %>
-        </div>
+       <div class="product-item-actions">
+  <% if (locals.isAdmin) { %>
+    
+    <a class="btn btn-alt" href="/admin/products/<%= product.id %>">View And Edit</a>
+    
+    <form action="/admin/products/<%= product.id %>/delete" method="POST" style="display: inline-block;">
+      <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+      <button class="btn btn-alt">Delete</button>
+    </form>
+
+  <% } else { %>
+    
+    <a class="btn" href="/products/<%= product.id %>">View Details</a>
+    
+  <% } %>
+</div>
     </div>
        
     </article>
